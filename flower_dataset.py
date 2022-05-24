@@ -82,11 +82,25 @@ class FlowerDataset(Dataset):
         
         return paths, labels
         
+def create_imgnet_like_folder(ds, basedir='./imgnet_like_ds/'):
+    from tqdm import tqdm
+    
+    for i in tqdm(range(len(ds))):
+        img, lbl = ds[i]
+    
+        dst = os.path.join(basedir,str(lbl))
+        os.makedirs(dst,exist_ok=True)
         
+        img.save(os.path.join(dst,f'{i}.jpg'))
+    
+    
 if __name__ == '__main__':        
     path1 = '12896336/train-en/train-en'
     path2 = 'Orchid Flowers Dataset-v1.1/Orchid Flowers Dataset-v1.1/Orchid_Images'
-
+    
+    ds = FlowerDataset(path1, path2)
+    create_imgnet_like_folder(ds)
+    exit()
     
     from torchvision import transforms as T
     transforms = T.Compose([
@@ -114,7 +128,7 @@ if __name__ == '__main__':
     plt.show()
     
     
-    
+
     
     
     
