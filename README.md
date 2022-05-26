@@ -26,4 +26,14 @@ model.load_state_dict(state_dict)
 
 # display the model
 print(model)
+
+# actually use model
+from PIL import Image
+from timm.data import create_transform
+model.eval()
+transform = create_transform(input_size=224, crop_pct=model.default_cfg['crop_pct'])
+image = Image.open('../flower.jpg')
+input_image = transform(image).unsqueeze(0)
+pred = model(input_image)
+print(f'Predicted class num [probability]: {pred.argmax().item()} [{pred[0,pred.argmax()]}]')
 ```
