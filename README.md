@@ -7,10 +7,11 @@
   - legend: \[current_class_image_belongs_to - prob_by_model_for this_class\]\[modeel_predic_class - prob_by_model_for this_class\]
 ## Model
 How to load pretrain VOLO model:
-1) Clone actual model: `git clone https://github.com/sail-sg/volo`
-2) Download weights: [link](https://drive.google.com/file/d/18SKO-GW4yenQcHBHfsp1Wgt3baWa7kdt/view?usp=sharing)
-3) `conda install timm` or `pip install timm`
-4) Load the model:
+1. Clone actual model: `git clone https://github.com/sail-sg/volo`
+2. Download weights: [link](https://drive.google.com/file/d/18SKO-GW4yenQcHBHfsp1Wgt3baWa7kdt/view?usp=sharing)  
+  2.1. Linux: `pip install gdown & gdown https://drive.google.com/uc?id=18SKO-GW4yenQcHBHfsp1Wgt3baWa7kdt`
+4. `conda install timm` or `pip install timm`
+5. Load the model:
 ``` python
 import torch
 from volo.models.volo import *
